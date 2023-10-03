@@ -6,11 +6,12 @@ IPWorks OpenPGP 2022 libraries for the corresponding edition are required to run
 
 ## Reference Documentation
 * [Java Edition](https://cdn.nsoftware.com/help/IGH/java/)
-* [Javascript Edition](https://cdn.nsoftware.com/help/IGH/js/)
 * [.NET Edition](https://cdn.nsoftware.com/help/IGH/cs/)
+* [JavaScript Edition](https://cdn.nsoftware.com/help/IGH/js/)
 * [Python Edition](https://cdn.nsoftware.com/help/IGH/py/)
 * [PHP Edition](https://cdn.nsoftware.com/help/IGH/php/)
 * [C++ Edition](https://cdn.nsoftware.com/help/IGH/cpp/)
+* [Delphi Edition](https://cdn.nsoftware.com/help/IGH/dlp/)
 * [macOS Edition](https://cdn.nsoftware.com/help/IGH/mac/)
 * [iOS Edition](https://cdn.nsoftware.com/help/IGH/mac/)
 
@@ -19,6 +20,7 @@ IPWorks OpenPGP 2022 libraries for the corresponding edition are required to run
 | --- | --- |
 | [OpenPGP](./IPWorks%20OpenPGP%20Samples/OpenPGP) | Illustrates how to encrypt, sign, decrypt and verify signatures. |
 | [PIMAP Email Client](./IPWorks%20OpenPGP%20Samples/PIMAP%20Email%20Client) | Shows how to retrieve emails using IMAP and decrypt and/or verify signatures. |
+| [Self Decrypting Archive](./IPWorks%20OpenPGP%20Samples/Self%20Decrypting%20Archive) | Shows how to create a Self Decrypting Archive (SDA) exe using the SDA component. |
 | [Sign and Encrypt Email with Attachments](./IPWorks%20OpenPGP%20Samples/Sign%20and%20Encrypt%20Email%20with%20Attachments) | Demonstrates the use of the PFileMailer component. |
 
 ## Support
