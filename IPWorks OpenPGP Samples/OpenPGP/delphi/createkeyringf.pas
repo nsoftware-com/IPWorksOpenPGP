@@ -27,8 +27,7 @@ type
     procedure btnChooseClick(Sender: TObject);
     procedure keymgrKeyList(Sender: TObject; const UserId, KeyId,
       Fingerprint: string; HasSecretKey: Boolean;
-      const PublicKeyAlgorithm: string; PublicKeyLength: Integer;
-      const Curve: String);
+      const PublicKeyAlgorithm: string; PublicKeyLength: Integer);
     procedure btnDeleteClick(Sender: TObject);
     procedure btnCreateClick(Sender: TObject);
     procedure btnSaveClick(Sender: TObject);
@@ -86,7 +85,7 @@ end;
 
 procedure TFormCreateKeyring.keymgrKeyList(Sender: TObject; const UserId, KeyId,
   Fingerprint: string; HasSecretKey: Boolean; const PublicKeyAlgorithm: string;
-  PublicKeyLength: Integer; const Curve: String);
+  PublicKeyLength: Integer);
 begin
 lvwKeys.Items.Add;
 lvwKeys.Items.Item[lvwKeys.Items.Count - 1].Caption := UserId;

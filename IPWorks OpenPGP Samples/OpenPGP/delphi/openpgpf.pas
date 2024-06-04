@@ -76,8 +76,7 @@ type
     procedure btnGoClick(Sender: TObject);
     procedure keymgrKeyList(Sender: TObject; const UserId, KeyId,
       Fingerprint: string; HasSecretKey: Boolean;
-      const PublicKeyAlgorithm: string; PublicKeyLength: Integer;
-      const Curve: String);
+      const PublicKeyAlgorithm: string; PublicKeyLength: Integer);
     procedure btnEncryptClick(Sender: TObject);
     procedure btnDecryptClick(Sender: TObject);
     procedure btnSignClick(Sender: TObject);
@@ -401,7 +400,7 @@ end;
 
 procedure TFormOpenPGP.keymgrKeyList(Sender: TObject; const UserId, KeyId,
   Fingerprint: string; HasSecretKey: Boolean; const PublicKeyAlgorithm: string;
-  PublicKeyLength: Integer; const Curve: String);
+  PublicKeyLength: Integer);
 begin
  if (HasSecretKey) then
   cboPrivateKeys.Items.Add(UserId);
