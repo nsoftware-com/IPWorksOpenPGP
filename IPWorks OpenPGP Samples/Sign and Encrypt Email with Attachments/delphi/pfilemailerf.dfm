@@ -2,7 +2,7 @@ object FormPfilemailer: TFormPfilemailer
   Left = 0
   Top = 0
   Caption = 'PFileMailer Demo'
-  ClientHeight = 616
+  ClientHeight = 648
   ClientWidth = 605
   Color = clBtnFace
   Constraints.MaxWidth = 621
@@ -13,11 +13,9 @@ object FormPfilemailer: TFormPfilemailer
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   DesignSize = (
     605
-    616)
-  PixelsPerInch = 96
+    648)
   TextHeight = 13
   object Label1: TLabel
     AlignWithMargins = True
@@ -43,7 +41,7 @@ object FormPfilemailer: TFormPfilemailer
   object Label5: TLabel
     AlignWithMargins = True
     Left = 22
-    Top = 263
+    Top = 295
     Width = 36
     Height = 13
     Caption = 'Subject'
@@ -52,7 +50,7 @@ object FormPfilemailer: TFormPfilemailer
   object Attachments: TLabel
     AlignWithMargins = True
     Left = 22
-    Top = 518
+    Top = 550
     Width = 61
     Height = 13
     Caption = 'Attachments'
@@ -60,7 +58,7 @@ object FormPfilemailer: TFormPfilemailer
   object txtSubject: TEdit
     AlignWithMargins = True
     Left = 89
-    Top = 263
+    Top = 295
     Width = 505
     Height = 21
     Anchors = [akLeft, akTop, akRight]
@@ -69,7 +67,7 @@ object FormPfilemailer: TFormPfilemailer
   object lbAttachments: TListBox
     AlignWithMargins = True
     Left = 89
-    Top = 518
+    Top = 550
     Width = 302
     Height = 87
     TabStop = False
@@ -80,7 +78,7 @@ object FormPfilemailer: TFormPfilemailer
   object btnAdd: TButton
     AlignWithMargins = True
     Left = 397
-    Top = 549
+    Top = 581
     Width = 75
     Height = 25
     Anchors = [akTop, akRight]
@@ -91,7 +89,7 @@ object FormPfilemailer: TFormPfilemailer
   object btnRemove: TButton
     AlignWithMargins = True
     Left = 397
-    Top = 580
+    Top = 612
     Width = 75
     Height = 25
     Anchors = [akTop, akRight]
@@ -102,7 +100,7 @@ object FormPfilemailer: TFormPfilemailer
   object btnSend: TButton
     AlignWithMargins = True
     Left = 478
-    Top = 549
+    Top = 581
     Width = 75
     Height = 25
     Anchors = [akTop, akRight]
@@ -113,7 +111,7 @@ object FormPfilemailer: TFormPfilemailer
   object txtMessage: TMemo
     AlignWithMargins = True
     Left = 8
-    Top = 290
+    Top = 322
     Width = 586
     Height = 222
     Anchors = [akLeft, akTop, akRight]
@@ -131,12 +129,12 @@ object FormPfilemailer: TFormPfilemailer
     Left = 8
     Top = 40
     Width = 589
-    Height = 73
+    Height = 105
     Caption = 'Connection Settings'
     TabOrder = 1
     DesignSize = (
       589
-      73)
+      105)
     object Label2: TLabel
       AlignWithMargins = True
       Left = 14
@@ -175,6 +173,38 @@ object FormPfilemailer: TFormPfilemailer
       Caption = 'From'
       Layout = tlCenter
     end
+    object Label10: TLabel
+      AlignWithMargins = True
+      Left = 330
+      Top = 44
+      Width = 20
+      Height = 13
+      Alignment = taRightJustify
+      Caption = 'Port'
+      Layout = tlCenter
+    end
+    object Label11: TLabel
+      AlignWithMargins = True
+      Left = 304
+      Top = 71
+      Width = 46
+      Height = 13
+      Alignment = taRightJustify
+      Caption = 'Password'
+      Layout = tlCenter
+    end
+    object Label12: TLabel
+      AlignWithMargins = True
+      Left = 14
+      Top = 71
+      Width = 52
+      Height = 17
+      Alignment = taRightJustify
+      BiDiMode = bdLeftToRight
+      Caption = 'Username:'
+      ParentBiDiMode = False
+      Layout = tlCenter
+    end
     object txtFrom: TEdit
       AlignWithMargins = True
       Left = 356
@@ -189,7 +219,7 @@ object FormPfilemailer: TFormPfilemailer
       AlignWithMargins = True
       Left = 81
       Top = 44
-      Width = 505
+      Width = 230
       Height = 21
       Anchors = [akLeft, akTop, akRight]
       TabOrder = 2
@@ -204,10 +234,37 @@ object FormPfilemailer: TFormPfilemailer
       AutoSize = False
       TabOrder = 0
     end
+    object txtMailPort: TEdit
+      AlignWithMargins = True
+      Left = 356
+      Top = 44
+      Width = 230
+      Height = 21
+      Anchors = [akLeft, akTop, akRight]
+      TabOrder = 3
+    end
+    object txtPassword: TEdit
+      AlignWithMargins = True
+      Left = 356
+      Top = 71
+      Width = 230
+      Height = 21
+      Anchors = [akLeft, akTop, akRight]
+      TabOrder = 5
+    end
+    object txtUsername: TEdit
+      AlignWithMargins = True
+      Left = 81
+      Top = 71
+      Width = 217
+      Height = 21
+      Anchors = [akLeft, akTop, akRight]
+      TabOrder = 4
+    end
   end
   object GroupBox3: TGroupBox
     Left = 8
-    Top = 119
+    Top = 151
     Width = 589
     Height = 138
     Caption = 'PGP Settings'
@@ -312,20 +369,21 @@ object FormPfilemailer: TFormPfilemailer
   object odFileBrowse: TOpenDialog
     Options = []
     Left = 552
-    Top = 568
+    Top = 600
   end
   object ipgPFileMailer1: TipgPFileMailer
     CompressionMethod = 'zip'
     EncryptingAlgorithm = 'AES128'
     SigningAlgorithm = 'SHA1'
+    SSLAcceptServerCertStore = 'MY'
     SSLCertStore = 'MY'
     Left = 552
-    Top = 504
+    Top = 536
   end
   object ipgKeyMgr1: TipgKeyMgr
     OnKeyList = ipgKeyMgr1KeyList
     Left = 488
-    Top = 503
+    Top = 535
   end
   object dlgKeyring: TFileOpenDialog
     DefaultFolder = 'C:\'
@@ -333,14 +391,14 @@ object FormPfilemailer: TFormPfilemailer
     FileTypes = <>
     Options = [fdoPickFolders, fdoPathMustExist]
     Left = 480
-    Top = 568
+    Top = 600
   end
   object FileOpenDialog2: TFileOpenDialog
     FavoriteLinks = <>
     FileTypes = <>
     Options = []
     Left = 416
-    Top = 504
+    Top = 536
   end
 end
 

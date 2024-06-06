@@ -1,5 +1,5 @@
 (*
- * IPWorks OpenPGP 2022 Delphi Edition - Sample Project
+ * IPWorks OpenPGP 2024 Delphi Edition - Sample Project
  *
  * This sample project demonstrates the usage of IPWorks OpenPGP in a 
  * simple, straightforward way. It is not intended to be a complete 

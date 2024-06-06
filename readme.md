@@ -2,18 +2,18 @@
 The provided sample projects offer a concise yet effective demonstration of the components from IPWorks OpenPGP, showcasing their usage in a straightforward manner. While they are not intended to be complete applications, they serve as valuable illustrations of key features. To enhance clarity, error handling and checks are simplified, allowing users to focus on the core functionality.
 
 ## Requirements
-IPWorks OpenPGP 2022 libraries for the corresponding edition are required to run these samples.  Free download from: [https://www.nsoftware.com/ipworksopenpgp](https://www.nsoftware.com/ipworksopenpgp)
+IPWorks OpenPGP 2024 libraries for the corresponding edition are required to run these samples.  Free download from: [https://www.nsoftware.com/ipworksopenpgp](https://www.nsoftware.com/ipworksopenpgp)
 
 ## Reference Documentation
-* [Java Edition](https://cdn.nsoftware.com/help/IGH/java/)
-* [.NET Edition](https://cdn.nsoftware.com/help/IGH/cs/)
-* [JavaScript Edition](https://cdn.nsoftware.com/help/IGH/js/)
-* [Python Edition](https://cdn.nsoftware.com/help/IGH/py/)
-* [PHP Edition](https://cdn.nsoftware.com/help/IGH/php/)
-* [C++ Edition](https://cdn.nsoftware.com/help/IGH/cpp/)
-* [Delphi Edition](https://cdn.nsoftware.com/help/IGH/dlp/)
-* [macOS Edition](https://cdn.nsoftware.com/help/IGH/mac/)
-* [iOS Edition](https://cdn.nsoftware.com/help/IGH/mac/)
+* [Java Edition](https://cdn.nsoftware.com/help/IGJ/java/)
+* [.NET Edition](https://cdn.nsoftware.com/help/IGJ/cs/)
+* [JavaScript Edition](https://cdn.nsoftware.com/help/IGJ/js/)
+* [Python Edition](https://cdn.nsoftware.com/help/IGJ/py/)
+* [PHP Edition](https://cdn.nsoftware.com/help/IGJ/php/)
+* [C++ Edition](https://cdn.nsoftware.com/help/IGJ/cpp/)
+* [Delphi Edition](https://cdn.nsoftware.com/help/IGJ/dlp/)
+* [macOS Edition](https://cdn.nsoftware.com/help/IGJ/mac/)
+* [iOS Edition](https://cdn.nsoftware.com/help/IGJ/mac/)
 
 ## Sample Projects
 | Sample Project | Description |

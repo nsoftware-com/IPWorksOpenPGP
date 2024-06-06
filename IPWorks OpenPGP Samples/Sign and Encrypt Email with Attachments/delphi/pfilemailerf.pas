@@ -1,5 +1,5 @@
 (*
- * IPWorks OpenPGP 2022 Delphi Edition - Sample Project
+ * IPWorks OpenPGP 2024 Delphi Edition - Sample Project
  *
  * This sample project demonstrates the usage of IPWorks OpenPGP in a 
  * simple, straightforward way. It is not intended to be a complete 
@@ -55,10 +55,17 @@ type
     txtPassphrase: TEdit;
     dlgKeyring: TFileOpenDialog;
     FileOpenDialog2: TFileOpenDialog;
+    txtMailPort: TEdit;
+    Label10: TLabel;
+    txtPassword: TEdit;
+    Label11: TLabel;
+    txtUsername: TEdit;
+    Label12: TLabel;
     procedure btnLoadKeyringClick(Sender: TObject);
     procedure ipgKeyMgr1KeyList(Sender: TObject; const UserId, KeyId,
       Fingerprint: string; HasSecretKey: Boolean;
-      const PublicKeyAlgorithm: string; PublicKeyLength: Integer);
+      const PublicKeyAlgorithm: string; PublicKeyLength: Integer;
+      const Curve: string);
     procedure btnAddClick(Sender: TObject);
     procedure btnRemoveClick(Sender: TObject);
     procedure btnSendClick(Sender: TObject);
@@ -133,6 +140,11 @@ begin
         end
         else
           ipgPFileMailer1.MailServer := txtMailServer.Text;
+          ipgPFileMailer1.MailPort := StrToInt(txtMailPort.Text);
+          ipgPFileMailer1.SSLStartMode := sslAutomatic;
+
+          ipgPFileMailer1.User := txtUsername.Text;
+          ipgPFileMailer1.Password := txtPassword.Text;
 
         for I := 0 to lbAttachments.Items.Count-1 do
           ipgPFileMailer1.AddAttachment(lbAttachments.Items[I]);
@@ -169,7 +181,7 @@ end;
 
 procedure TFormPfilemailer.ipgKeyMgr1KeyList(Sender: TObject; const UserId, KeyId,
   Fingerprint: string; HasSecretKey: Boolean; const PublicKeyAlgorithm: string;
-  PublicKeyLength: Integer);
+  PublicKeyLength: Integer; const Curve: string);
 begin
   if(HasSecretKey) then
     cboPrivateKeys.Items.Add(UserId);

@@ -1,5 +1,5 @@
 (*
- * IPWorks OpenPGP 2022 Delphi Edition - Sample Project
+ * IPWorks OpenPGP 2024 Delphi Edition - Sample Project
  *
  * This sample project demonstrates the usage of IPWorks OpenPGP in a 
  * simple, straightforward way. It is not intended to be a complete 
@@ -87,13 +87,15 @@ begin
       if FormLogin.ShowModal() = mrOk then
       begin
          PIMAP1.MailServer := FormLogin.EditIMAPServer.Text;
+         PIMAP1.MailPort := StrToInt(FormLogin.EditIMAPPort.Text);
          PIMAP1.User := FormLogin.EditUser.Text;
          PIMAP1.Password := FormLogin.EditPassword.Text;
+         PIMAP1.SSLStartMode := sslAutomatic;
          try
             PIMAP1.Connect;
             PIMAP1.Mailbox := '*';
             PIMAP1.ListMailboxes;
-         except on E: EipgPIMAP do
+         except on E: EIPWorksOpenPGP do
             ShowMessage(E.Message);
          end;
          ButtonLogin.Caption := '&Logout';
@@ -103,7 +105,7 @@ begin
    begin
       try
          PIMAP1.disconnect();
-      except on E: EipgPIMAP do
+      except on E: EIPWorksOpenPGP do
          ShowMessage(E.Message);
       end;
       TreeViewMailboxes.Items.Clear();
@@ -163,7 +165,7 @@ begin
          ListBoxMessage.Items.Text := PIMAP1.MessageText;
 
       end;
-   except on E: EipgPIMAP do
+   except on E: EIPWorksOpenPGP do
       ShowMessage(E.Message);
    end;
 end;
@@ -185,7 +187,7 @@ begin
          PIMAP1.Decrypt();
          ListBoxMessage.Items.Text := PIMAP1.MessageText;
       end;
-   except on E: EipgPIMAP do
+   except on E: EIPWorksOpenPGP do
       ShowMessage(E.Message);
    end;
 end;
@@ -209,7 +211,7 @@ begin
          ListBoxMessage.Items.Text := PIMAP1.MessageText;
 
       end;
-   except on E: EipgPIMAP do
+   except on E: EIPWorksOpenPGP do
       ShowMessage(E.Message);
    end;
 end;
@@ -310,10 +312,10 @@ begin
          begin
             PIMAP1.MessageSet := '1:' + IntToStr(PIMAP1.MessageCount);
             state := HEADERS_;
-            PIMAP1.FetchMessageInfo();
+            PIMAP1.RetrieveMessageInfo();
          end;
       end;
-   except on E: EipgPIMAP do
+   except on E: EIPWorksOpenPGP do
       ShowMessage(E.Message);
    end;
    Screen.Cursor := crDefault;
@@ -329,14 +331,14 @@ begin
       PIMAP1.MessageSet := ListViewMessages.Selected.Caption;
       ListBoxMessage.Items.Clear();
       state := TEXT_;
-      PIMAP1.FetchMessageInfo();
-      PIMAP1.FetchMessageHeaders();
-      PIMAP1.FetchMessageText();
+      PIMAP1.RetrieveMessageInfo();
+      PIMAP1.RetrieveMessageHeaders();
+      PIMAP1.RetrieveMessageText();
       ListBoxMessage.Items.Text := PIMAP1.MessageText;
 
       Label3.Caption := ListViewMessages.Selected.SubItems.Strings[0];
       Label4.Caption := ListViewMessages.Selected.SubItems.Strings[1];
-   except on E: EipgPIMAP do
+   except on E: EIPWorksOpenPGP do
       ShowMessage(E.Message);
    end;
    Screen.Cursor := crDefault;

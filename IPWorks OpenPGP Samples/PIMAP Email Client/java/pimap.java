@@ -1,5 +1,5 @@
 /*
- * IPWorks OpenPGP 2022 Java Edition - Sample Project
+ * IPWorks OpenPGP 2024 Java Edition - Sample Project
  *
  * This sample project demonstrates the usage of IPWorks OpenPGP in a 
  * simple, straightforward way. It is not intended to be a complete 
@@ -24,8 +24,8 @@ public class pimap extends ConsoleDemo {
 	}
 	
 	public static void main(String[] args) {
-		Pimap imap = new Pimap();
-		Keymgr keymgr = new Keymgr();
+		PIMAP imap = new PIMAP();
+		KeyMgr keymgr = new KeyMgr();
 
 		try {
 			System.out.println("***************************************************************");
@@ -33,8 +33,8 @@ public class pimap extends ConsoleDemo {
 			System.out.println("* to decrypt and verify OpenPGP email messages.               *");
 			System.out.println("***************************************************************\n");			
 			
-			imap.addPimapEventListener(new DefaultPimapEventListener() {
-				public void mailboxList(PimapMailboxListEvent arg) {
+			imap.addPIMAPEventListener(new DefaultPIMAPEventListener() {
+				public void mailboxList(PIMAPMailboxListEvent arg) {
 					System.out.println(arg.mailbox);
 
 					if (++lines == 22) {
@@ -43,7 +43,7 @@ public class pimap extends ConsoleDemo {
 					}
 				}
 
-				public void messageInfo(PimapMessageInfoEvent arg) {
+				public void messageInfo(PIMAPMessageInfoEvent arg) {
 					System.out.print(arg.messageId + "  ");
 					System.out.print(arg.subject + "  ");
 					System.out.print(arg.messageDate + "  ");
@@ -55,7 +55,7 @@ public class pimap extends ConsoleDemo {
 					}
 				}
 
-				public void transfer(PimapTransferEvent arg) {
+				public void transfer(PIMAPTransferEvent arg) {
 					System.out.print(arg.text);
 
 					if (++lines == 22) {
@@ -65,15 +65,17 @@ public class pimap extends ConsoleDemo {
 				}
 			});
 
-			keymgr.addKeymgrEventListener(new DefaultKeymgrEventListener() {
-				public void keyList(KeymgrKeyListEvent arg) {
+			keymgr.addKeyMgrEventListener(new DefaultKeyMgrEventListener() {
+				public void keyList(KeyMgrKeyListEvent arg) {
 					System.out.println("UserId: " + arg.userId + "\t\tKeyId: " + arg.keyId);
 				}
 			});
 
 			imap.setMailServer(prompt("IMAP Server"));
+			imap.setMailPort(Integer.parseInt(prompt("Port")));
 			imap.setUser(prompt("User Name"));
 			imap.setPassword(prompt("Password"));
+			imap.setSSLStartMode(0); // auto
 			keymgr.loadKeyring(prompt("Keyring Dir"));
 
 			imap.connect();
@@ -107,8 +109,8 @@ public class pimap extends ConsoleDemo {
 
 				case f:
 					if (imap.getMessageCount() > 0) {
-						imap.setMessageSet("0:" + imap.getMessageCount());
-						imap.fetchMessageInfo();
+						imap.setMessageSet("1:" + imap.getMessageCount());
+						imap.retrieveMessageInfo();
 					} else {
 						System.out.println("No messages in this mailbox.");
 					}
@@ -116,8 +118,8 @@ public class pimap extends ConsoleDemo {
 
 				case h:
 					if (imap.getMessageCount() > 0) {
-						imap.setMessageSet("0:" + imap.getMessageCount());
-						imap.fetchMessageInfo();
+						imap.setMessageSet("1:" + imap.getMessageCount());
+						imap.retrieveMessageInfo();
 					} else {
 						System.out.println("No messages in this mailbox.");
 					}
@@ -136,8 +138,8 @@ public class pimap extends ConsoleDemo {
 					if (msgnum < imap.getMessageCount()) {
 						msgnum++;
 						imap.setMessageSet(String.valueOf(msgnum));
-						imap.fetchMessageInfo();
-						imap.fetchMessageText();
+						imap.retrieveMessageInfo();
+						imap.retrieveMessageText();
 					} else {
 						System.out.println("No more messages in this mailbox.");
 						msgnum = 0;
@@ -151,7 +153,7 @@ public class pimap extends ConsoleDemo {
 				case t:
 					msgnum = Integer.parseInt(argument[1]);
 					imap.setMessageSet(argument[1]);
-					imap.fetchMessageText();
+					imap.retrieveMessageText();
 					break;
 
 				case lk:
@@ -162,8 +164,8 @@ public class pimap extends ConsoleDemo {
 
 				case d:
 					imap.setMessageSet(argument[1]);
-					imap.fetchMessageHeaders();
-					imap.fetchMessageText();
+					imap.retrieveMessageHeaders();
+					imap.retrieveMessageText();
 
 					String decryptUserId = prompt("UserId (or email) of decryption key");
 
@@ -179,8 +181,8 @@ public class pimap extends ConsoleDemo {
 					
 				case v:
 					imap.setMessageSet(argument[1]);
-					imap.fetchMessageHeaders();
-					imap.fetchMessageText();
+					imap.retrieveMessageHeaders();
+					imap.retrieveMessageText();
 
 					String signerUserId = prompt("UserId (or email) of signer key");
 
@@ -195,8 +197,8 @@ public class pimap extends ConsoleDemo {
 					
 				case dv:
 					imap.setMessageSet(argument[1]);
-					imap.fetchMessageHeaders();
-					imap.fetchMessageText();
+					imap.retrieveMessageHeaders();
+					imap.retrieveMessageText();
 
 					decryptUserId = prompt("UserId (or email) of decryption key");
 
@@ -220,7 +222,7 @@ public class pimap extends ConsoleDemo {
 					try {
 						msgnum = Integer.parseInt(command);
 						imap.setMessageSet(command);
-						imap.fetchMessageText();
+						imap.retrieveMessageText();
 					} catch (NumberFormatException e) {
 						System.out.println("Bad command / Not implemented in demo.");
 					}
@@ -277,15 +279,13 @@ class ConsoleDemo {
     System.out.print(label + punctuation + " ");
     return input();
   }
-
-  static String prompt(String label, String punctuation, String defaultVal)
-  {
-	System.out.print(label + " [" + defaultVal + "] " + punctuation + " ");
-	String response = input();
-	if(response.equals(""))
-		return defaultVal;
-	else
-		return response;
+  static String prompt(String label, String punctuation, String defaultVal) {
+      System.out.print(label + " [" + defaultVal + "] " + punctuation + " ");
+      String response = input();
+      if (response.equals(""))
+        return defaultVal;
+      else
+        return response;
   }
 
   static char ask(String label) {

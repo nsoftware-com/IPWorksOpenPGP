@@ -16,6 +16,8 @@ type
     EditIMAPServer: TEdit;
     Button1: TButton;
     Button2: TButton;
+    EditIMAPPort: TEdit;
+    Label4: TLabel;
 
   private
     { Private declarations }

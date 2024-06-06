@@ -1,5 +1,5 @@
 /*
- * IPWorks OpenPGP 2022 Java Edition - Sample Project
+ * IPWorks OpenPGP 2024 Java Edition - Sample Project
  *
  * This sample project demonstrates the usage of IPWorks OpenPGP in a 
  * simple, straightforward way. It is not intended to be a complete 
@@ -20,8 +20,8 @@ import java.io.InputStreamReader;
 import ipworksopenpgp.*;
 
 public class openpgp extends ConsoleDemo {
-  Openpgp pgp = new Openpgp();
-  Keymgr keymgr = new Keymgr();
+  OpenPGP pgp = new OpenPGP();
+  KeyMgr keymgr = new KeyMgr();
 
   public openpgp(){
     try
@@ -34,8 +34,8 @@ public class openpgp extends ConsoleDemo {
       System.out.println("decrpyt a message and to sign or verify a message.          ");
       System.out.println("************************************************************\n");
 
-      keymgr.addKeymgrEventListener(new DefaultKeymgrEventListener() {
-        public void keyList(KeymgrKeyListEvent e) {
+      keymgr.addKeyMgrEventListener(new DefaultKeyMgrEventListener() {
+        public void keyList(KeyMgrKeyListEvent e) {
           System.out.println(String.format("%-80s [%-8s] %-12s", e.userId, e.keyId, (e.hasSecretKey ? "private" : "")));
         }
       });
@@ -245,15 +245,13 @@ class ConsoleDemo {
     System.out.print(label + punctuation + " ");
     return input();
   }
-
-  static String prompt(String label, String punctuation, String defaultVal)
-  {
-	System.out.print(label + " [" + defaultVal + "] " + punctuation + " ");
-	String response = input();
-	if(response.equals(""))
-		return defaultVal;
-	else
-		return response;
+  static String prompt(String label, String punctuation, String defaultVal) {
+      System.out.print(label + " [" + defaultVal + "] " + punctuation + " ");
+      String response = input();
+      if (response.equals(""))
+        return defaultVal;
+      else
+        return response;
   }
 
   static char ask(String label) {

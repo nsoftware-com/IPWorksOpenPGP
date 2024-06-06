@@ -1,5 +1,5 @@
 (*
- * IPWorks OpenPGP 2022 Delphi Edition - Sample Project
+ * IPWorks OpenPGP 2024 Delphi Edition - Sample Project
  *
  * This sample project demonstrates the usage of IPWorks OpenPGP in a 
  * simple, straightforward way. It is not intended to be a complete 
@@ -76,7 +76,8 @@ type
     procedure btnGoClick(Sender: TObject);
     procedure keymgrKeyList(Sender: TObject; const UserId, KeyId,
       Fingerprint: string; HasSecretKey: Boolean;
-      const PublicKeyAlgorithm: string; PublicKeyLength: Integer);
+      const PublicKeyAlgorithm: string; PublicKeyLength: Integer;
+      const Curve: String);
     procedure btnEncryptClick(Sender: TObject);
     procedure btnDecryptClick(Sender: TObject);
     procedure btnSignClick(Sender: TObject);
@@ -400,7 +401,7 @@ end;
 
 procedure TFormOpenPGP.keymgrKeyList(Sender: TObject; const UserId, KeyId,
   Fingerprint: string; HasSecretKey: Boolean; const PublicKeyAlgorithm: string;
-  PublicKeyLength: Integer);
+  PublicKeyLength: Integer; const Curve: String);
 begin
  if (HasSecretKey) then
   cboPrivateKeys.Items.Add(UserId);

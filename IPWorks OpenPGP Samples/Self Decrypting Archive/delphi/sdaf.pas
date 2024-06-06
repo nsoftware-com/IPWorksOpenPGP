@@ -1,5 +1,5 @@
 (*
- * IPWorks OpenPGP 2022 Delphi Edition - Sample Project
+ * IPWorks OpenPGP 2024 Delphi Edition - Sample Project
  *
  * This sample project demonstrates the usage of IPWorks OpenPGP in a 
  * simple, straightforward way. It is not intended to be a complete 
@@ -41,7 +41,7 @@ type
     procedure btnBrowseClick(Sender: TObject);
     procedure btnCreateClick(Sender: TObject);
     procedure btnSaveOutputClick(Sender: TObject);
-    procedure ipgSDA1Progress(Sender: TObject; const Filename: string;
+    procedure ipgSDA1Progress(Sender: TObject; const FileName: string;
       BytesProcessed: Int64; PercentProcessed: Integer);
   private
     { Private declarations }
@@ -74,11 +74,11 @@ begin
   SaveDialog1.Filter := 'Exe Files (*.exe)|*.exe';
   if SaveDialog1.Execute then
   begin
-    txtOutputName.Text := SaveDialog1.Filename;
+    txtOutputName.Text := SaveDialog1.FileName;
   end;
 end;
 
-procedure TFormSDA.ipgSDA1Progress(Sender: TObject; const Filename: string;
+procedure TFormSDA.ipgSDA1Progress(Sender: TObject; const FileName: string;
   BytesProcessed: Int64; PercentProcessed: Integer);
 begin
   ProgressBar1.Position := PercentProcessed;

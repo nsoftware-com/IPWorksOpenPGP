@@ -25,8 +25,8 @@ type
     Button2: TButton;
     procedure btnBrowseClick(Sender: TObject);
     procedure KeyMgr1KeyList(Sender: TObject; const UserId, KeyId,
-      Fingerprint: string; HasSecretKey: Boolean;
-      const PublicKeyAlgorithm: string; PublicKeyLength: Integer);
+      Fingerprint: string; HasSecretKey: Boolean; const PublicKeyAlgorithm: string;
+      PublicKeyLength: Integer; const Curve: string);
   private
     procedure listKeys;
   public
@@ -57,7 +57,7 @@ end;
 
 procedure TFormPGPSetup.KeyMgr1KeyList(Sender: TObject; const UserId, KeyId,
   Fingerprint: string; HasSecretKey: Boolean; const PublicKeyAlgorithm: string;
-  PublicKeyLength: Integer);
+  PublicKeyLength: Integer; const Curve: string);
 begin
  if (HasSecretKey) then
   cboPrivateKeys.Items.Add(UserId);
