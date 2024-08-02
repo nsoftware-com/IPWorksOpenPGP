@@ -7,7 +7,5 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="openpgp.cs" />
-    <Reference Include="nsoftware.IPWorksOpenPGP">
-      <HintPath>..\..\lib\net6.0\nsoftware.IPWorksOpenPGP.dll</HintPath>
-    </Reference>
+    <PackageReference Include="nsoftware.IPWorksOpenPGP" Version="24.*" />
   </ItemGroup></Project>
