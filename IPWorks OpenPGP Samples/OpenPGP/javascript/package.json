@@ -8,7 +8,7 @@
   "main": "openpgp.js",
   "dependencies": {
     "full-icu": "*",
-    "ipworksopenpgp": "^24.0.9067"
+    "ipworksopenpgp": "^24.0.9153"
   },
   "scripts": {
     "openpgp": "node openpgp.js"
